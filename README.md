@@ -1,4 +1,4 @@
-# localstorage_3
+# Auth_Firebase
 
 ## Project setup
 ```

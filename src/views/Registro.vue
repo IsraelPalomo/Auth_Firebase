@@ -3,9 +3,9 @@
 		<h1>Registro de Usuario</h1>
 		<form>
 			<input type="email" placeholder="email" class="form-control m-2" v-model.trim="email" />
-			<input type="password" placeholder="password" class="form-control m-2" v-model="pass1" />
-			<input type="password" placeholder="password" class="form-control m-2" v-model="pass2" />
-			<button type="submit" class="btn btn-primary">Registrar</button>
+			<input type="password" placeholder="password" class="form-control m-2" v-model.trim="pass1" />
+			<input type="password" placeholder="password" class="form-control m-2" v-model.trim="pass2" />
+			<button type="submit" class="btn btn-primary" :disabled="bloquear">Registrar</button>
 		</form>
 	</section>
 </template>
@@ -18,6 +18,17 @@ export default {
 			pass1: "",
 			pass2: "",
 		};
+	},
+	computed: {
+		bloquear() {
+			if (!this.email.includes("@")) {
+				return true;
+			}
+			if (this.pass1.length > 5 && this.pass1 === this.pass2) {
+				return false;
+			}
+			return true;
+		},
 	},
 };
 </script>

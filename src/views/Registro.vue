@@ -1,7 +1,7 @@
 <template>
 	<section class="registro">
 		<h1>Registro de Usuario</h1>
-		<form>
+		<form @submit.prevent="procesarFormulario">
 			<input type="email" placeholder="email" class="form-control m-2" v-model.trim="email" />
 			<input type="password" placeholder="password" class="form-control m-2" v-model.trim="pass1" />
 			<input type="password" placeholder="password" class="form-control m-2" v-model.trim="pass2" />
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
 	data() {
 		return {
@@ -18,6 +19,9 @@ export default {
 			pass1: "",
 			pass2: "",
 		};
+	},
+	methods: {
+		...mapActions(["registroUsuario"]),
 	},
 	computed: {
 		bloquear() {
@@ -28,6 +32,12 @@ export default {
 				return false;
 			}
 			return true;
+		},
+		procesarFormulario() {
+			this.registroUsuario({ email: this.email, password: this.pass1 });
+			this.email = "";
+			this.pass1 = "";
+			this.pass2 = "";
 		},
 	},
 };

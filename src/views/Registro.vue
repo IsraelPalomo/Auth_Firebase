@@ -2,16 +2,24 @@
 	<section class="registro">
 		<h1>Registro de Usuario</h1>
 		<form>
-			<input type="email" placeholder="email" class="form-control m-2" />
-			<input type="password" placeholder="password" class="form-control m-2" />
-			<input type="password" placeholder="password" class="form-control m-2" />
+			<input type="email" placeholder="email" class="form-control m-2" v-model.trim="email" />
+			<input type="password" placeholder="password" class="form-control m-2" v-model="pass1" />
+			<input type="password" placeholder="password" class="form-control m-2" v-model="pass2" />
 			<button type="submit" class="btn btn-primary">Registrar</button>
 		</form>
 	</section>
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			email: "",
+			pass1: "",
+			pass2: "",
+		};
+	},
+};
 </script>
 
 <style lang="scss" scoped>

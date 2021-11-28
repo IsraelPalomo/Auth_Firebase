@@ -49,6 +49,11 @@ export default createStore({
 				);
 				const data = await res.json();
 				console.log(data);
+				if (data.error) {
+					console.log(data.error);
+					return;
+				}
+				commit("setUser", data);
 			} catch (error) {
 				console.log(error);
 			}

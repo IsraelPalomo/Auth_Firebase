@@ -34,6 +34,10 @@ export default createStore({
 		},
 	},
 	actions: {
+		cerrarSesion({ commit }) {
+			commit("setUser", null);
+			router.push("/registro");
+		},
 		async ingresoUsuario({ commit }, user) {
 			try {
 				const res = await fetch(

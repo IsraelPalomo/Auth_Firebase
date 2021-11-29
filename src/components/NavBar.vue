@@ -7,16 +7,21 @@
 				>Regitro</router-link
 			>
 			<router-link to="/login" class="btn btn-dark" v-if="!usuarioAutenticado">Login</router-link>
-			<button v-if="usuarioAutenticado" class="btn btn-dark">Cerrar Sesion</button>
+			<button v-if="usuarioAutenticado" class="btn btn-dark" @click="cerrarSesion">
+				Cerrar Sesion
+			</button>
 		</div>
 	</div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
 	computed: {
 		...mapGetters(["usuarioAutenticado"]),
+	},
+	methods: {
+		...mapActions(["cerrarSesion"]),
 	},
 };
 </script>

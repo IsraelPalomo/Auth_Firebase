@@ -1,4 +1,5 @@
 <template>
+	<NavBar />
 	<section class="registro">
 		<h1>Registro de Usuario</h1>
 		<form @submit.prevent="procesarFormulario">
@@ -12,6 +13,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import NavBar from "../components/NavBar.vue";
 export default {
 	data() {
 		return {
@@ -20,6 +22,7 @@ export default {
 			pass2: "",
 		};
 	},
+	components: { NavBar },
 	methods: {
 		...mapActions(["registroUsuario"]),
 	},
@@ -47,7 +50,7 @@ export default {
 .registro {
 	text-align: center;
 	width: 50%;
-	max-width: 50rem;
+	max-width: 30rem;
 	margin: 0 auto;
 	background-color: #323232;
 	padding: 2rem;

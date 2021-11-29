@@ -1,4 +1,5 @@
 <template>
+	<NavBar />
 	<div class="con">
 		<form @submit.prevent="updateTareas(tarea)">
 			<h2>Edita tu tarea ✍️</h2>
@@ -11,9 +12,11 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import Input from "../components/Input.vue";
+import NavBar from "../components/NavBar.vue";
 export default {
 	components: {
 		Input,
+		NavBar,
 	},
 	computed: {
 		...mapState(["tarea"]),

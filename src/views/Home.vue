@@ -1,5 +1,6 @@
 <template>
 	<div class="home">
+		<NavBar />
 		<form @submit.prevent="procesarFormulario()">
 			<h2>Crea tu tarea ✍️</h2>
 			<Input :tarea="tarea" />
@@ -12,12 +13,13 @@
 <script>
 import Input from "../components/Input.vue";
 import ListaTareas from "../components/ListaTareas.vue";
+import NavBar from "../components/NavBar.vue";
 import { mapActions } from "vuex";
 const shortid = require("shortid");
 
 export default {
 	name: "Home",
-	components: { Input, ListaTareas },
+	components: { Input, ListaTareas, NavBar },
 	data() {
 		return {
 			tarea: {

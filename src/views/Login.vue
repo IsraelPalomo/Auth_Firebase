@@ -1,4 +1,5 @@
 <template>
+	<NavBar />
 	<section class="registro">
 		<h1>Ingreso de Usuario</h1>
 		<form @submit.prevent="procesarFormulario">
@@ -12,6 +13,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import NavBar from "../components/NavBar.vue";
 export default {
 	data() {
 		return {
@@ -19,6 +21,7 @@ export default {
 			pass1: "",
 		};
 	},
+	components: { NavBar },
 	methods: {
 		...mapActions(["ingresoUsuario"]),
 	},

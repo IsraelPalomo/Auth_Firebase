@@ -150,4 +150,9 @@ export default createStore({
 		},
 	},
 	modules: {},
+	getters: {
+		usuarioAutenticado(state) {
+			return !!state.user;
+		},
+	},
 });

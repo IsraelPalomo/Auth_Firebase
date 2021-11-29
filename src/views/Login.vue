@@ -44,25 +44,29 @@ export default {
 <style lang="scss" scoped>
 .registro {
 	text-align: center;
-	width: 50%;
+	width: 30rem;
 	max-width: 50rem;
 	margin: 0 auto;
 	background-color: #323232;
 	padding: 2rem;
 	margin-top: 10rem;
 	border-radius: 15px;
+
 	h1 {
 		color: white;
 		margin-bottom: 3rem;
 	}
-	input {
-		max-width: 15rem;
-		margin: 1rem auto 0 auto;
-		display: inline-block;
-	}
-	button {
-		display: block;
-		margin: 3rem auto 0 auto;
+	form {
+		input {
+			max-width: 15rem;
+			width: 60%;
+			margin: 1rem auto 0 auto;
+			display: inline-block;
+		}
+		button {
+			display: block;
+			margin: 3rem auto 0 auto;
+		}
 	}
 }
 </style>

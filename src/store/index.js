@@ -83,10 +83,10 @@ export default createStore({
 				console.log(error);
 			}
 		},
-		async pushTareas({ commit }, tarea) {
+		async pushTareas({ commit, state }, tarea) {
 			try {
 				const res = await fetch(
-					`https://fir-2-5b246-default-rtdb.firebaseio.com/tareas/${tarea.id}.json`,
+					`https://fir-2-5b246-default-rtdb.firebaseio.com/tareas/${state.user.localId}/${tarea.id}.json?auth=${state.user.idToken}`,
 					{
 						method: "PUT",
 						headers: {
@@ -102,10 +102,10 @@ export default createStore({
 			}
 			commit("pushTarea", tarea);
 		},
-		async deleteTareas({ commit }, id) {
+		async deleteTareas({ commit, state }, id) {
 			try {
 				const res = await fetch(
-					`https://fir-2-5b246-default-rtdb.firebaseio.com/tareas/${id}.json`,
+					`https://fir-2-5b246-default-rtdb.firebaseio.com/tareas/${state.user.localId}/${id}.json?auth=${state.user.idToken}`,
 					{
 						method: "DELETE",
 					}
@@ -118,10 +118,10 @@ export default createStore({
 		setTareas({ commit }, id) {
 			commit("setTarea", id);
 		},
-		async updateTareas({ commit }, tarea) {
+		async updateTareas({ commit, state }, tarea) {
 			try {
 				const res = await fetch(
-					`https://fir-2-5b246-default-rtdb.firebaseio.com/tareas/${tarea.id}.json`,
+					`https://fir-2-5b246-default-rtdb.firebaseio.com/tareas/${state.user.localId}/${tarea.id}.json?auth=${state.user.idToken}`,
 					{
 						method: "PATCH",
 						body: JSON.stringify(tarea),
@@ -133,9 +133,11 @@ export default createStore({
 				console.log(error);
 			}
 		},
-		async cargarFireBase({ commit }) {
+		async cargarFireBase({ commit, state }) {
 			try {
-				const res = await fetch("https://fir-2-5b246-default-rtdb.firebaseio.com/tareas.json");
+				const res = await fetch(
+					`https://fir-2-5b246-default-rtdb.firebaseio.com/tareas/${state.user.localId}.json?auth=${state.user.idToken}`
+				);
 				const data = await res.json();
 				const arrayDatos = [];
 				for (const item in data) {

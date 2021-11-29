@@ -41,7 +41,10 @@ export default {
 				importancia: "",
 			};
 		},
-		...mapActions(["pushTareas"]),
+		...mapActions(["pushTareas", "cargarFireBase"]),
+	},
+	created() {
+		this.cargarFireBase();
 	},
 };
 </script>

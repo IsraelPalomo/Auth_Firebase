@@ -37,6 +37,7 @@ export default createStore({
 		cerrarSesion({ commit }) {
 			commit("setUser", null);
 			router.push("/registro");
+			localStorage.removeItem("usuario");
 		},
 		async ingresoUsuario({ commit }, user) {
 			try {
@@ -58,6 +59,7 @@ export default createStore({
 				}
 				commit("setUser", data);
 				router.push("/");
+				localStorage.setItem("usuario", JSON.stringify(user));
 			} catch (error) {
 				console.log(error);
 			}
@@ -138,6 +140,11 @@ export default createStore({
 			}
 		},
 		async cargarFireBase({ commit, state }) {
+			if (localStorage.getItem("user")) {
+				commit("setUser", JSON.parse("user"));
+			} else {
+				return commit("setUser", null);
+			}
 			try {
 				const res = await fetch(
 					`https://fir-2-5b246-default-rtdb.firebaseio.com/tareas/${state.user.localId}.json?auth=${state.user.idToken}`
